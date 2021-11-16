@@ -5,14 +5,23 @@ public class Usuario {
     private int id;
     private String usuario;
     private String senha;
+    private int fg_ativo;
 
     public Usuario() {
     }
 
-    public Usuario(int id, String usuario, String senha) {
+    public Usuario(int id, String usuario, String senha, int fg_ativo) {
         this.id = id;
         this.usuario = usuario;
         this.senha = senha;
+    }
+
+    public int getFg_ativo() {
+        return fg_ativo;
+    }
+
+    public void setFg_ativo(int fg_ativo) {
+        this.fg_ativo = fg_ativo;
     }
 
     public int getId() {
