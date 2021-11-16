@@ -2,12 +2,12 @@ create table tb_usuario(
   	id SERIAL,
  	usuario varchar(255),
  	senha varchar(100),
-	constraint pk_empresa_id primary key (id)
+	constraint pk_usuario_id primary key (id)
 );
 
 insert into tb_usuario (usuario,senha)
 	values
-	('yuri','123456');
+	('joao','123456');
 	
 update tb_usuario set senha=md5('123456')
 	where id = 1
