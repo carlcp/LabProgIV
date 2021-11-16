@@ -1,5 +1,9 @@
 package view;
 
+import controller.UsuarioDAO;
+import javax.swing.JOptionPane;
+import model.Usuario;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -34,10 +38,10 @@ public class FormLogin extends javax.swing.JFrame {
         lblUsuario = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
         lblSenha = new javax.swing.JLabel();
-        txtSenha = new javax.swing.JTextField();
         btnEntrar = new javax.swing.JButton();
         btnCadastrar = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
+        txtSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,8 +55,6 @@ public class FormLogin extends javax.swing.JFrame {
 
         lblSenha.setFont(new java.awt.Font("Tempus Sans ITC", 0, 20)); // NOI18N
         lblSenha.setText("SENHA");
-
-        txtSenha.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
 
         btnEntrar.setFont(new java.awt.Font("Tempus Sans ITC", 0, 20)); // NOI18N
         btnEntrar.setForeground(new java.awt.Color(12, 35, 195));
@@ -81,6 +83,8 @@ public class FormLogin extends javax.swing.JFrame {
             }
         });
 
+        txtSenha.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -88,20 +92,20 @@ public class FormLogin extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(lblUsuario)
-                        .addComponent(lblSenha)
-                        .addComponent(txtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
-                        .addComponent(txtSenha)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(136, 136, 136)
-                            .addComponent(lblLogin)))
+                    .addComponent(lblUsuario)
+                    .addComponent(lblSenha)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(136, 136, 136)
+                        .addComponent(lblLogin))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnSair)
                         .addGap(27, 27, 27)
                         .addComponent(btnCadastrar)
                         .addGap(27, 27, 27)
-                        .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(txtSenha, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtUsuario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -139,6 +143,38 @@ public class FormLogin extends javax.swing.JFrame {
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
         // TODO add your handling code here:
+        Usuario u = new Usuario();
+        u.setUsuario(txtUsuario.getText());
+        u.setSenha(new String(txtSenha.getPassword()));
+        
+        if (u.getUsuario().trim().isEmpty() ||
+            u.getSenha().trim().isEmpty()){
+            
+            JOptionPane.showMessageDialog(
+                null,
+                "Usuário e/ou senha não pode ser vazio",
+                "Login",
+                JOptionPane.ERROR_MESSAGE
+            );
+        }else{
+            
+            if (new UsuarioDAO().login(u)){
+                
+                //login realizado com sucesso!
+                FormPrincipal f = new FormPrincipal();
+                f.setVisible(true);
+                this.dispose();
+                
+            }else{
+                JOptionPane.showMessageDialog(
+                    null,
+                    "Usuário e/ou senha inválido",
+                    "Login",
+                    JOptionPane.ERROR_MESSAGE
+                );
+            }
+            
+        }
     }//GEN-LAST:event_btnEntrarActionPerformed
 
     /**
@@ -183,7 +219,7 @@ public class FormLogin extends javax.swing.JFrame {
     private javax.swing.JLabel lblLogin;
     private javax.swing.JLabel lblSenha;
     private javax.swing.JLabel lblUsuario;
-    private javax.swing.JTextField txtSenha;
+    private javax.swing.JPasswordField txtSenha;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
