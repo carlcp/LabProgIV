@@ -8,8 +8,8 @@ public class Conexao {
         //PARÂMETROS
     private static final String HOST = "localhost:5432";
     private static final String USUARIO = "postgres";
-    private static final String SENHA = "password";
-    private static final String DATABASE = "Projetof";
+    private static final String SENHA = "c24092001";
+    private static final String DATABASE = "projetof";
     
     //STRING DE CONEXÃO
     private static final String URL =
