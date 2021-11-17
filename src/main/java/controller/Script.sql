@@ -17,7 +17,7 @@ select * from tb_usuario;
 
 CREATE TABLE tb_categoria(
  id serial,
- NOME varchar(250),
+ nome varchar(250),
  fg_ativo int,	
  constraint pk_categoria_id primary key (id)
 );
@@ -41,7 +41,7 @@ CREATE TABLE tb_combustiveis(
     preco numeric,
     qntl int,
     taxa numeric,
-	fg_ativo int,
+    fg_ativo int,
     constraint pk_combustiveis_id primary key(id),
     constraint fk_combustiveis_id foreign key (id_categoria) references tb_categoria(id)
 );
