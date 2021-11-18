@@ -11,31 +11,16 @@ import model.Categoria;
 
 /**
  *
- * @author 834398
+ * @author ycar2
  */
 public class FormCategoriaCadastro extends javax.swing.JInternalFrame {
 
-     private String id;
-    
+    /**
+     * Creates new form FormCategoriaCadastro1
+     */
     public FormCategoriaCadastro() {
         initComponents();
-        this.setTitle("Cadastro de Categoria");
-        this.setResizable(false);
     }
-   
-    public FormCategoriaCadastro(String id) {
-     this();
-        this.id = id;
-        
-        //Exibir os dados da Categoria selecionada
-        Categoria cat = new CategoriaDAO().pesquisarPorId(id);
-        if (cat != null){
-            txtId.setText(Integer.toString(cat.getId()));
-            txtNomeCat.setText(cat.getNome());
-            cbxFg_Ativo.setSelectedIndex(cat.getFg_ativo());
-        }
-    }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -47,7 +32,7 @@ public class FormCategoriaCadastro extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
-        btnVoltar = new javax.swing.JButton();
+        btnVoltar2 = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         txtNomeCat = new javax.swing.JTextField();
@@ -58,11 +43,11 @@ public class FormCategoriaCadastro extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 20)); // NOI18N
         jLabel2.setText("Ativo");
 
-        btnVoltar.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        btnVoltar.setText("Voltar");
-        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
+        btnVoltar2.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        btnVoltar2.setText("Voltar");
+        btnVoltar2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVoltarActionPerformed(evt);
+                btnVoltar2ActionPerformed(evt);
             }
         });
 
@@ -111,26 +96,26 @@ public class FormCategoriaCadastro extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(cbxFg_Ativo, javax.swing.GroupLayout.Alignment.LEADING, 0, 1, Short.MAX_VALUE)
-                                    .addComponent(btnVoltar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(btnVoltar2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(btnSalvar))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel1)
                                             .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(8, 8, 8))))))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(54, 54, 54)
+                .addContainerGap()
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtNomeCat, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -144,58 +129,55 @@ public class FormCategoriaCadastro extends javax.swing.JInternalFrame {
                     .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnVoltar)
+                    .addComponent(btnVoltar2)
                     .addComponent(btnSalvar))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+    private void btnVoltar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltar2ActionPerformed
         // TODO add your handling code here:
         this.dispose();
-    }//GEN-LAST:event_btnVoltarActionPerformed
+    }//GEN-LAST:event_btnVoltar2ActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // TODO add your handling code here:
         //Recuperar as informacoes da UI
-        Categoria obj = new Categoria();         
+        Categoria obj = new Categoria();
         //retornar a categoria selecionada no comboBox
         obj.setNome(txtNomeCat.getText());
         obj.setFg_ativo(cbxFg_Ativo.getSelectedIndex());
-       
-        
+
         //executar a operacao
         CategoriaDAO dao = new CategoriaDAO();
         int resultado;
-        
+
         //se o campo Id estiver vazio
         if (txtId.getText().isEmpty()){
             //inserir
-           resultado = dao.cadastro(obj);
+            resultado = dao.cadastro(obj);
         }else{
             obj.setId(Integer.parseInt(txtId.getText()));
             resultado = dao.atualizar(obj);
         }
-            
-        
-        
+
         if (resultado == 1){
             JOptionPane.showMessageDialog(
-                    null,
-                    "Operacao realizada com sucesso!"
+                null,
+                "Operacao realizada com sucesso!"
             );
-            
+
         }else{
             JOptionPane.showMessageDialog(
-                    null,
-                    "Ocorreu um erro.",
-                    "Posto",
-                    JOptionPane.ERROR_MESSAGE
+                null,
+                "Ocorreu um erro.",
+                "Posto",
+                JOptionPane.ERROR_MESSAGE
             );
         }
-        
+
         this.dispose();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
@@ -211,6 +193,8 @@ public class FormCategoriaCadastro extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSalvar;
     private javax.swing.JButton btnVoltar;
+    private javax.swing.JButton btnVoltar1;
+    private javax.swing.JButton btnVoltar2;
     private javax.swing.JComboBox<String> cbxFg_Ativo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

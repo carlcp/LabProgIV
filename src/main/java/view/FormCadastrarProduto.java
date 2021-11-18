@@ -17,7 +17,7 @@ import model.Produto;
 public class FormCadastrarProduto extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form FormCA
+     * Creates new form FormCadastrarProduto1
      */
     public FormCadastrarProduto() {
         initComponents();
@@ -32,30 +32,32 @@ public class FormCadastrarProduto extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        cbxAtivo = new javax.swing.JComboBox<>();
         lblNome2 = new javax.swing.JLabel();
+        lblNome1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        lblNome = new javax.swing.JLabel();
         btnSalvar = new javax.swing.JButton();
+        txtTaxa = new javax.swing.JTextField();
         btnCancelar = new javax.swing.JButton();
+        txtQuantidade1 = new javax.swing.JTextField();
         lblId = new javax.swing.JLabel();
+        lblNome3 = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
         lblId1 = new javax.swing.JLabel();
         cbxCategoria = new javax.swing.JComboBox<>();
         lblAtivo = new javax.swing.JLabel();
         txtPreco = new javax.swing.JTextField();
+        cbxAtivo = new javax.swing.JComboBox<>();
         txtNomeProd = new javax.swing.JTextField();
-        lblNome1 = new javax.swing.JLabel();
-        lblNome = new javax.swing.JLabel();
-        txtTaxa = new javax.swing.JTextField();
-        txtQuantidade1 = new javax.swing.JTextField();
-        lblNome3 = new javax.swing.JLabel();
-
-        cbxAtivo.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        cbxAtivo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não", "Sim" }));
-        cbxAtivo.setSelectedIndex(1);
 
         lblNome2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lblNome2.setText("Preço");
+
+        lblNome1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lblNome1.setText("Quantidade");
+
+        lblNome.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lblNome.setText("Nome");
 
         btnSalvar.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         btnSalvar.setText("salvar");
@@ -66,6 +68,8 @@ public class FormCadastrarProduto extends javax.swing.JInternalFrame {
             }
         });
 
+        txtTaxa.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+
         btnCancelar.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         btnCancelar.setText("cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -74,8 +78,13 @@ public class FormCadastrarProduto extends javax.swing.JInternalFrame {
             }
         });
 
+        txtQuantidade1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+
         lblId.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lblId.setText("Id");
+
+        lblNome3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lblNome3.setText("Taxa");
 
         txtId.setEditable(false);
         txtId.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
@@ -91,20 +100,11 @@ public class FormCadastrarProduto extends javax.swing.JInternalFrame {
 
         txtPreco.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
 
+        cbxAtivo.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        cbxAtivo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não", "Sim" }));
+        cbxAtivo.setSelectedIndex(1);
+
         txtNomeProd.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-
-        lblNome1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        lblNome1.setText("Quantidade");
-
-        lblNome.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        lblNome.setText("Nome");
-
-        txtTaxa.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-
-        txtQuantidade1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-
-        lblNome3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        lblNome3.setText("Taxa");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -151,7 +151,7 @@ public class FormCadastrarProduto extends javax.swing.JInternalFrame {
                                         .addComponent(txtTaxa, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(txtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(lblNome3)))))))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -211,7 +211,7 @@ public class FormCadastrarProduto extends javax.swing.JInternalFrame {
         //Retornar a Categoria selecionada no ComboBox
         Categoria cat = (Categoria)cbxCategoria.getSelectedItem();
         obj.setId_categoria(cat.getId());
-        
+
         obj.setNome(txtNomeProd.getText());
         obj.setPreco(Double.parseDouble(txtPreco.getText()));
         obj.setQntd(Integer.parseInt(txtQuantidade1.getText()));
@@ -252,7 +252,6 @@ public class FormCadastrarProduto extends javax.swing.JInternalFrame {
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
 
         this.dispose();
-
     }//GEN-LAST:event_btnCancelarActionPerformed
 
 

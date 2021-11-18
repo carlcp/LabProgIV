@@ -13,10 +13,10 @@ import model.Combustivel;
  *
  * @author ycar2
  */
-public class FormCadastrarCombustivel extends javax.swing.JFrame {
+public class FormCadastrarCombustivel extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form FormCadastrarCombustivel
+     * Creates new form FormCadastrarCombustivel1
      */
     public FormCadastrarCombustivel() {
         initComponents();
@@ -31,39 +31,65 @@ public class FormCadastrarCombustivel extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnCancelar = new javax.swing.JButton();
+        txtQuantidade2 = new javax.swing.JTextField();
         txtPreco1 = new javax.swing.JTextField();
+        lblId = new javax.swing.JLabel();
         cbxAtivo1 = new javax.swing.JComboBox<>();
+        lblNome3 = new javax.swing.JLabel();
         txtNomeComb11 = new javax.swing.JTextField();
+        txtId = new javax.swing.JTextField();
         lblNome2 = new javax.swing.JLabel();
+        lblId1 = new javax.swing.JLabel();
         lblNome1 = new javax.swing.JLabel();
+        cbxCategoria1 = new javax.swing.JComboBox<>();
         jSeparator1 = new javax.swing.JSeparator();
+        lblAtivo = new javax.swing.JLabel();
         lblNome = new javax.swing.JLabel();
         btnSalvar = new javax.swing.JButton();
         txtTaxa1 = new javax.swing.JTextField();
-        btnCancelar = new javax.swing.JButton();
-        txtQuantidade2 = new javax.swing.JTextField();
-        lblId = new javax.swing.JLabel();
-        lblNome3 = new javax.swing.JLabel();
-        txtId = new javax.swing.JTextField();
-        lblId1 = new javax.swing.JLabel();
-        cbxCategoria1 = new javax.swing.JComboBox<>();
-        lblAtivo = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        btnCancelar.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        btnCancelar.setText("cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+
+        txtQuantidade2.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
 
         txtPreco1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+
+        lblId.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lblId.setText("Id");
 
         cbxAtivo1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         cbxAtivo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não", "Sim" }));
         cbxAtivo1.setSelectedIndex(1);
 
+        lblNome3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lblNome3.setText("Taxa");
+
         txtNomeComb11.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+
+        txtId.setEditable(false);
+        txtId.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
 
         lblNome2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lblNome2.setText("Preço");
 
+        lblId1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lblId1.setText("Categoria");
+
         lblNome1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lblNome1.setText("Quantidade Litros");
+
+        cbxCategoria1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        cbxCategoria1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        lblAtivo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lblAtivo.setText("Ativo");
 
         lblNome.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lblNome.setText("Nome");
@@ -78,34 +104,6 @@ public class FormCadastrarCombustivel extends javax.swing.JFrame {
         });
 
         txtTaxa1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-
-        btnCancelar.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        btnCancelar.setText("cancelar");
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
-            }
-        });
-
-        txtQuantidade2.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-
-        lblId.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        lblId.setText("Id");
-
-        lblNome3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        lblNome3.setText("Taxa");
-
-        txtId.setEditable(false);
-        txtId.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-
-        lblId1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        lblId1.setText("Categoria");
-
-        cbxCategoria1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        cbxCategoria1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        lblAtivo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        lblAtivo.setText("Ativo");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -207,11 +205,16 @@ public class FormCadastrarCombustivel extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
 
         //Recuperar as informações da UI
-       
-       Combustivel obj = new Combustivel();
+
+        Combustivel obj = new Combustivel();
         obj.setNome(txtNomeComb11.getText());
 
         //Retornar a Categoria selecionada no ComboBox
@@ -255,45 +258,6 @@ public class FormCadastrarCombustivel extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-
-        this.dispose();
-    }//GEN-LAST:event_btnCancelarActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormCadastrarCombustivel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormCadastrarCombustivel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormCadastrarCombustivel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormCadastrarCombustivel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FormCadastrarCombustivel().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
