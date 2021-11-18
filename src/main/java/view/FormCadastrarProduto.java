@@ -5,7 +5,10 @@
  */
 package view;
 
+import controller.CategoriaDAO;
 import controller.ProdutoDAO;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import model.Categoria;
 import model.Produto;
@@ -15,12 +18,40 @@ import model.Produto;
  * @author ycar2
  */
 public class FormCadastrarProduto extends javax.swing.JInternalFrame {
-
+   private String id;
     /**
      * Creates new form FormCadastrarProduto1
      */
     public FormCadastrarProduto() {
-        initComponents();
+         initComponents();
+        this.setTitle("Cadastro de Produto");
+        this.setResizable(false);
+        preencherComboCategoria();
+    }
+    public  FormCadastrarProduto(String id){
+        this();
+        this.id = id;
+        
+        //Exibir os dados da Produto selecionada
+        Produto obj = new ProdutoDAO().pesquisarPorId(id);
+        if (obj != null){
+            txtId.setText(Integer.toString(obj.getId()));
+            txtNomeProd.setText(obj.getNome());
+            txtPreco.setText(Double.toString(obj.getPreco()));
+            
+            //selecionar a Categoria
+            DefaultComboBoxModel m = (DefaultComboBoxModel)cbxCategoria.getModel();
+            for (int i = 0; i < m.getSize(); i++) {
+                Categoria cat = (Categoria)m.getElementAt(i);
+                if ( cat.getId() == obj.getId_categoria() ){
+                    cbxCategoria.setSelectedIndex(i);
+                    break;
+                }
+            }
+            txtQuantidade1.setText(Integer.toString(obj.getQntd()));
+            txtTaxa.setText(Double.toString(obj.getTaxa()));
+            cbxAtivo.setSelectedIndex(obj.getFg_ativo());
+        }
     }
 
     /**
@@ -274,4 +305,16 @@ public class FormCadastrarProduto extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtQuantidade1;
     private javax.swing.JTextField txtTaxa;
     // End of variables declaration//GEN-END:variables
+  private void preencherComboCategoria(){
+        //recuperar a lista de categorias
+        List<Produto> lista = new ProdutoDAO().listar();
+        
+        if (lista != null){
+            DefaultComboBoxModel m = new DefaultComboBoxModel();
+            for(Produto obj : lista){
+                m.addElement(obj); //{id,nome,fg_ativo}
+            }
+            cbxCategoria.setModel(m);
+        }
+    }
 }

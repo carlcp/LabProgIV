@@ -51,6 +51,33 @@ public class CategoriaDAO {
             Conexao.desconectar(con);
         }
     }
+    
+     //
+    // LISTAR
+    // Retorna todos os dados da tabela
+    public List<Categoria> listar(){
+        try {
+            String SQL = "select * from tb_categoria order by id";
+            cmd = con.prepareStatement(SQL);
+            
+            //executar a consulta
+            List<Categoria> lista = new ArrayList<>();
+            ResultSet rs = cmd.executeQuery();
+            while (rs.next()){
+                Categoria cat = new Categoria();
+                cat.setId(rs.getInt("id"));
+                cat.setNome(rs.getString("nome"));
+                cat.setFg_ativo(rs.getInt("fg_ativo"));
+                lista.add(cat);
+            }
+            return lista;
+        } catch (SQLException e) {
+            System.err.println("ERRO: " + e.getMessage());
+            return null;
+        }finally{
+            Conexao.desconectar(con);
+        }
+    }
     //
     // PESQUISAR POR NOME
     // Pesquisa categorias por nome

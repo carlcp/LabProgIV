@@ -6,20 +6,53 @@
 package view;
 
 import controller.CombustivelDAO;
+import controller.ProdutoDAO;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import model.Categoria;
 import model.Combustivel;
+import model.Produto;
 
 /**
  *
  * @author ycar2
  */
 public class FormCadastrarCombustivel extends javax.swing.JInternalFrame {
-
+    private String id;
     /**
      * Creates new form FormCadastrarCombustivel1
      */
     public FormCadastrarCombustivel() {
         initComponents();
+        this.setTitle("Cadastro de Combustivel");
+        this.setResizable(false);
+        preencherComboCategoria();
+    }
+    public  FormCadastrarCombustivel(String id){
+        this();
+        this.id = id;
+        
+        //Exibir os dados da Produto selecionada
+        Produto obj = new ProdutoDAO().pesquisarPorId(id);
+        if (obj != null){
+            txtId1.setText(Integer.toString(obj.getId()));
+            txtNomeComb11.setText(obj.getNome());
+            
+            //selecionar a Categoria
+            DefaultComboBoxModel m = (DefaultComboBoxModel)cbxCategoria1.getModel();
+            for (int i = 0; i < m.getSize(); i++) {
+                Categoria cat = (Categoria)m.getElementAt(i);
+                if ( cat.getId() == obj.getId_categoria() ){
+                    cbxCategoria1.setSelectedIndex(i);
+                    break;
+                }
+            }
+            txtPreco1.setText(Double.toString(obj.getPreco()));
+            txtQuantidade2.setText(Integer.toString(obj.getQntd()));
+            txtTaxa1.setText(Double.toString(obj.getTaxa()));
+            cbxAtivo1.setSelectedIndex(obj.getFg_ativo());
+        }
     }
 
     /**
@@ -38,7 +71,7 @@ public class FormCadastrarCombustivel extends javax.swing.JInternalFrame {
         cbxAtivo1 = new javax.swing.JComboBox<>();
         lblNome3 = new javax.swing.JLabel();
         txtNomeComb11 = new javax.swing.JTextField();
-        txtId = new javax.swing.JTextField();
+        txtId1 = new javax.swing.JTextField();
         lblNome2 = new javax.swing.JLabel();
         lblId1 = new javax.swing.JLabel();
         lblNome1 = new javax.swing.JLabel();
@@ -73,8 +106,8 @@ public class FormCadastrarCombustivel extends javax.swing.JInternalFrame {
 
         txtNomeComb11.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
 
-        txtId.setEditable(false);
-        txtId.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        txtId1.setEditable(false);
+        txtId1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
 
         lblNome2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lblNome2.setText("Preço");
@@ -104,6 +137,11 @@ public class FormCadastrarCombustivel extends javax.swing.JInternalFrame {
         });
 
         txtTaxa1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        txtTaxa1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTaxa1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -124,7 +162,7 @@ public class FormCadastrarCombustivel extends javax.swing.JInternalFrame {
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(lblId)
-                                        .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(txtId1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(lblNome)
@@ -150,10 +188,10 @@ public class FormCadastrarCombustivel extends javax.swing.JInternalFrame {
                                                     .addComponent(lblNome1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblNome2)
                                         .addComponent(txtTaxa1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(txtPreco1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lblNome3)))))))
+                                        .addComponent(lblNome3)
+                                        .addComponent(lblNome2, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -164,7 +202,7 @@ public class FormCadastrarCombustivel extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblId)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtId1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblNome)
                         .addGap(56, 56, 56))
@@ -232,13 +270,13 @@ public class FormCadastrarCombustivel extends javax.swing.JInternalFrame {
         int resultado;
 
         //se o campo Id estiver vazio
-        if (txtId.getText().isEmpty()){
+        if (txtId1.getText().isEmpty()){
             //inserir
             resultado = dao.inserir(obj);
-            txtId.setText(Integer.toString(resultado));
+            txtId1.setText(Integer.toString(resultado));
         }else{
             //atualizar
-            obj.setId(Integer.parseInt(txtId.getText()));
+            obj.setId(Integer.parseInt(txtId1.getText()));
             resultado = dao.atualizar(obj);
         }
 
@@ -258,6 +296,10 @@ public class FormCadastrarCombustivel extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
+    private void txtTaxa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTaxa1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTaxa1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
@@ -272,10 +314,24 @@ public class FormCadastrarCombustivel extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblNome1;
     private javax.swing.JLabel lblNome2;
     private javax.swing.JLabel lblNome3;
-    private javax.swing.JTextField txtId;
+    private javax.swing.JTextField txtId1;
     private javax.swing.JTextField txtNomeComb11;
     private javax.swing.JTextField txtPreco1;
     private javax.swing.JTextField txtQuantidade2;
     private javax.swing.JTextField txtTaxa1;
     // End of variables declaration//GEN-END:variables
+
+   private void preencherComboCategoria(){
+        //recuperar a lista de categorias
+        List<Produto> lista = new ProdutoDAO().listar();
+        
+        if (lista != null){
+            DefaultComboBoxModel m = new DefaultComboBoxModel();
+            for(Produto obj : lista){
+                m.addElement(obj); //{id,nome,fg_ativo}
+            }
+            cbxCategoria1.setModel(m);
+        }
+    }
+
 }

@@ -5,9 +5,16 @@ C:\DiretorioPrincipal\LabProgIV\src\main\java\model\Produto.java
 C:\DiretorioPrincipal\LabProgIV\src\main\java\controller\ProdutoDAO.java
 C:\DiretorioPrincipal\LabProgIV\src\main\java\controller\ConexaoTest.java
 C:\DiretorioPrincipal\LabProgIV\src\main\java\model\Categoria.java
+C:\DiretorioPrincipal\LabProgIV\src\main\java\controller\ClienteDAO.java
+C:\DiretorioPrincipal\LabProgIV\src\main\java\view\FormCadastroCliente.java
 C:\DiretorioPrincipal\LabProgIV\src\main\java\model\Combustivel.java
 C:\DiretorioPrincipal\LabProgIV\src\main\java\controller\Conexao.java
+C:\DiretorioPrincipal\LabProgIV\src\main\java\model\Cliente.java
+C:\DiretorioPrincipal\LabProgIV\src\main\java\view\FormPesquisaCombustivel.java
+C:\DiretorioPrincipal\LabProgIV\src\main\java\view\FormPesquisaProduto.java
+C:\DiretorioPrincipal\LabProgIV\src\main\java\view\FormaPesquisaCliente.java
 C:\DiretorioPrincipal\LabProgIV\src\main\java\controller\UsuarioDAO.java
+C:\DiretorioPrincipal\LabProgIV\src\main\java\model\Telefone.java
 C:\DiretorioPrincipal\LabProgIV\src\main\java\model\Usuario.java
 C:\DiretorioPrincipal\LabProgIV\src\main\java\view\FormCadastrarCombustivel.java
 C:\DiretorioPrincipal\LabProgIV\src\main\java\view\FormCadastrarProduto.java
