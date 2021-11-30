@@ -173,7 +173,7 @@ public class FormCadastrarUsuario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(
                     null,
                     "Ocorreu um erro.",
-                    "Loja",
+                    "Posto",
                     JOptionPane.ERROR_MESSAGE
             );
         }

@@ -10,10 +10,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import model.Usuario;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import model.Categoria;
 /**
  *
  * @author 834398
+ * @author 767447
  */
 public class CategoriaDAO {
     private final Connection con;
@@ -23,7 +26,8 @@ public class CategoriaDAO {
         this.con = Conexao.conectar();
     }
     
-     public int cadastro(Categoria obj){
+   
+    public int cadastro(Categoria obj){
         try {
             
             String SQL="insert into tb_categoria "
@@ -48,6 +52,88 @@ public class CategoriaDAO {
         }
     }
     
+     //
+    // LISTAR
+    // Retorna todos os dados da tabela
+    public List<Categoria> listar(){
+        try {
+            String SQL = "select * from tb_categoria order by id";
+            cmd = con.prepareStatement(SQL);
+            
+            //executar a consulta
+            List<Categoria> lista = new ArrayList<>();
+            ResultSet rs = cmd.executeQuery();
+            while (rs.next()){
+                Categoria cat = new Categoria();
+                cat.setId(rs.getInt("id"));
+                cat.setNome(rs.getString("nome"));
+                cat.setFg_ativo(rs.getInt("fg_ativo"));
+                lista.add(cat);
+            }
+            return lista;
+        } catch (SQLException e) {
+            System.err.println("ERRO: " + e.getMessage());
+            return null;
+        }finally{
+            Conexao.desconectar(con);
+        }
+    }
+    //
+    // PESQUISAR POR NOME
+    // Pesquisa categorias por nome
+    //
+    public List<Categoria> pesquisarPorNome(String nome){
+        try {
+            String SQL = "select * from tb_categoria where nome ilike ? order by id";
+            cmd = con.prepareStatement(SQL);
+            cmd.setString(1,"%"+nome+"%");
+            
+            //executar a consulta
+            List<Categoria> lista = new ArrayList<>();
+            ResultSet rs = cmd.executeQuery();
+            while (rs.next()){
+                Categoria cat = new Categoria();
+                cat.setId(rs.getInt("id"));
+                cat.setNome(rs.getString("nome"));
+                cat.setFg_ativo(rs.getInt("fg_ativo"));
+                lista.add(cat);
+            }
+            return lista;
+        } catch (SQLException e) {
+            System.err.println("ERRO: " + e.getMessage());
+            return null;
+        }finally{
+            Conexao.desconectar(con);
+        }
+
+    }
+     //
+    // PESQUISAR POR ID
+    // Pesquisa categorias por Id
+    //
+    public Categoria pesquisarPorId(String id){
+        try {
+            String SQL = "select * from tb_categoria where id = ? order by id";
+            cmd = con.prepareStatement(SQL);
+            cmd.setString(1, Interger().parseInt(id));
+            
+            //executar a consulta
+            ResultSet rs = cmd.executeQuery();
+            if (rs.next()){
+                Categoria cat = new Categoria();
+                cat.setId(rs.getInt("id"));
+                cat.setNome(rs.getString("nome"));
+                cat.setFg_ativo(rs.getInt("fg_ativo"));
+                return cat;
+            }
+            return null;
+        } catch (SQLException e) {
+            System.err.println("ERRO: " + e.getMessage());
+            return null;
+        }finally{
+            Conexao.desconectar(con);
+        }
+    } 
     public int atualizar(Categoria obj){
         try{
             String SQL = "update tb_categoria, nome=?,  fg_ativo = ? where id = ? ";
