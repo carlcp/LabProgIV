@@ -6,13 +6,11 @@
 package view;
 
 import controller.CombustivelDAO;
-import controller.ProdutoDAO;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import model.Categoria;
 import model.Combustivel;
-import model.Produto;
 
 /**
  *
@@ -34,7 +32,7 @@ public class FormCadastrarCombustivel extends javax.swing.JInternalFrame {
         this.id = id;
         
         //Exibir os dados da Produto selecionada
-        Produto obj = new ProdutoDAO().pesquisarPorId(id);
+        Combustivel obj = new CombustivelDAO().pesquisarPorId(id);
         if (obj != null){
             txtId1.setText(Integer.toString(obj.getId()));
             txtNomeComb11.setText(obj.getNome());
@@ -49,7 +47,7 @@ public class FormCadastrarCombustivel extends javax.swing.JInternalFrame {
                 }
             }
             txtPreco1.setText(Double.toString(obj.getPreco()));
-            txtQuantidade2.setText(Integer.toString(obj.getQntd()));
+            txtQuantidade2.setText(Integer.toString(obj.getQntl()));
             txtTaxa1.setText(Double.toString(obj.getTaxa()));
             cbxAtivo1.setSelectedIndex(obj.getFg_ativo());
         }
@@ -323,11 +321,11 @@ public class FormCadastrarCombustivel extends javax.swing.JInternalFrame {
 
    private void preencherComboCategoria(){
         //recuperar a lista de categorias
-        List<Produto> lista = new ProdutoDAO().listar();
+        List<Combustivel> lista = new CombustivelDAO().listar();
         
         if (lista != null){
             DefaultComboBoxModel m = new DefaultComboBoxModel();
-            for(Produto obj : lista){
+            for(Combustivel obj : lista){
                 m.addElement(obj); //{id,nome,fg_ativo}
             }
             cbxCategoria1.setModel(m);

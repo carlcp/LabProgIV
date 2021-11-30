@@ -5,6 +5,8 @@
  */
 package view;
 
+import model.Cliente;
+
 /**
  *
  * @author ycar2
@@ -259,12 +261,12 @@ public class FormCadastroCliente extends javax.swing.JInternalFrame {
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
 
         //Recuperar as informações da UI
-        Produto obj = new Produto();
+        Cliente obj = new Cliente();
         obj.setNome(txtNomeProd.getText());
 
         //Retornar a Categoria selecionada no ComboBox
-        Categoria cat = (Categoria)cbxCategoria.getSelectedItem();
-        obj.setId_categoria(cat.getId());
+        Cliente cat = (Cliente)cbxcliente.getSelectedItem();
+        obj.setId_cliente(cat.getId());
 
         obj.setNome(txtNomeProd.getText());
         obj.setPreco(Double.parseDouble(txtPreco.getText()));

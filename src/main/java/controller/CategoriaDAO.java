@@ -115,7 +115,7 @@ public class CategoriaDAO {
         try {
             String SQL = "select * from tb_categoria where id = ? order by id";
             cmd = con.prepareStatement(SQL);
-            cmd.setString(1, Interger().parseInt(id));
+            cmd.setInt(1, Integer.parseInt(id));
             
             //executar a consulta
             ResultSet rs = cmd.executeQuery();

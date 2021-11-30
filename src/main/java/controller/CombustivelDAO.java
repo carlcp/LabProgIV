@@ -13,7 +13,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import model.Combustivel;
-import model.Produto;
+import model.Combustivel;
 
 /**
  *
@@ -27,7 +27,7 @@ public class CombustivelDAO {
         this.con = Conexao.conectar();
     }
      
-     public int inserir(Produto obj){
+     public int inserir(Combustivel obj){
         try {
             String SQL = "insert into tb_combustiveis (id_categoria,nome, "
                     + " preco,qntl, taxa,fg_ativo) values (?,?,?,?,?,?)";
@@ -35,7 +35,7 @@ public class CombustivelDAO {
             cmd = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             cmd.setString(1, obj.getNome());
             cmd.setInt(2,obj.getId_categoria());
-            cmd.setInt(3,obj.getQntd());
+            cmd.setInt(3,obj.getQntl());
             cmd.setDouble(4,obj.getTaxa());
             cmd.setInt(5,obj.getFg_ativo());
             
@@ -56,7 +56,7 @@ public class CombustivelDAO {
     //
     // ATUALIZAR
     //
-    public int atualizar(Produto obj){
+    public int atualizar(Combustivel obj){
         try {
             String SQL = "update tb_combustiveis id_categoria=?,set nome=?,"
                     + "preco=?,qntl=?, taxa=?, fg_ativo=? where id=?";
@@ -64,7 +64,7 @@ public class CombustivelDAO {
             cmd = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             cmd.setString(1, obj.getNome());
             cmd.setInt(2,obj.getId_categoria());
-            cmd.setInt(3,obj.getQntd());
+            cmd.setInt(3,obj.getQntl());
             cmd.setDouble(4,obj.getTaxa());
             cmd.setInt(5,obj.getFg_ativo());
             cmd.setInt(6,obj.getId());
@@ -151,7 +151,7 @@ public class CombustivelDAO {
     // PESQUISAR POR ID
     // Pesquisa categorias por Id
     //
-    public Produto pesquisarPorId(String id){
+    public Combustivel pesquisarPorId(String id){
         try {
             String SQL = "select * from tb_produto where id = ? order by id";
             cmd = con.prepareStatement(SQL);
@@ -160,11 +160,11 @@ public class CombustivelDAO {
             //executar a consulta
             ResultSet rs = cmd.executeQuery();
             if (rs.next()){
-                Produto obj = new Produto();
+                Combustivel obj = new Combustivel();
                 obj.setId(rs.getInt("id"));
                 obj.setNome(rs.getString("nome"));
                 obj.setId_categoria(rs.getInt("id_categoria"));
-                obj.setQntd(rs.getInt("qntd"));
+                obj.setQntl(rs.getInt("qntd"));
                 obj.setTaxa(rs.getDouble("taxa"));
                 obj.setFg_ativo(rs.getInt("fg_ativo"));
                 return obj;

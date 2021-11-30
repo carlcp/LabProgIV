@@ -23,6 +23,10 @@ public class Cliente {
         this.fg_ativo = fg_ativo;
     }
 
+    public Cliente() {
+    }
+    
+
     public int getId() {
         return id;
     }
