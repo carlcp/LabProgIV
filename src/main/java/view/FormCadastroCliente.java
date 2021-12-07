@@ -200,6 +200,8 @@ public class FormCadastroCliente extends javax.swing.JInternalFrame {
         obj.setNome(txtNomeClie.getText());
         obj.setNome(txtNomeClie.getText());
         obj.setCpf(txtCpf.getText());
+        obj.setDdd(txtDdd.getText());
+        obj.setNumero(txtTelefone.getText());
         obj.setFg_ativo(cbxAtivo.getSelectedIndex());
         
 

@@ -36,13 +36,12 @@ public class FormPrincipal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         menuCadastroCategoria = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        menuCadastroProduto = new javax.swing.JMenuItem();
+        menuPesquisaProduto = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
+        menuCaadastroCliente = new javax.swing.JMenuItem();
+        menuPesquisaCliente = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -71,43 +70,45 @@ public class FormPrincipal extends javax.swing.JFrame {
         });
         jMenu2.add(menuCadastroCategoria);
 
-        jMenuItem2.setText("Visualizar");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem2);
-
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Produto");
 
-        jMenuItem4.setText("Cadastrar");
-        jMenu3.add(jMenuItem4);
-
-        jMenuItem5.setText("Visualizar");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+        menuCadastroProduto.setText("Cadastrar");
+        menuCadastroProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
+                menuCadastroProdutoActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem5);
+        jMenu3.add(menuCadastroProduto);
+
+        menuPesquisaProduto.setText("Visualizar");
+        menuPesquisaProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuPesquisaProdutoActionPerformed(evt);
+            }
+        });
+        jMenu3.add(menuPesquisaProduto);
 
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Cliente");
 
-        jMenuItem6.setText("Cadastrar");
-        jMenu4.add(jMenuItem6);
-
-        jMenuItem7.setText("Visualizar");
-        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+        menuCaadastroCliente.setText("Cadastrar");
+        menuCaadastroCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem7ActionPerformed(evt);
+                menuCaadastroClienteActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem7);
+        jMenu4.add(menuCaadastroCliente);
+
+        menuPesquisaCliente.setText("Visualizar");
+        menuPesquisaCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuPesquisaClienteActionPerformed(evt);
+            }
+        });
+        jMenu4.add(menuPesquisaCliente);
 
         jMenuBar1.add(jMenu4);
 
@@ -132,17 +133,21 @@ public class FormPrincipal extends javax.swing.JFrame {
                abrirForm(new FormCategoriaCadastro());
     }//GEN-LAST:event_menuCadastroCategoriaActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    private void menuPesquisaProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPesquisaProdutoActionPerformed
+        abrirForm(new FormPesquisaProduto());
+    }//GEN-LAST:event_menuPesquisaProdutoActionPerformed
 
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
-
-    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+    private void menuPesquisaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPesquisaClienteActionPerformed
         abrirForm(new FormaPesquisaCliente());
-    }//GEN-LAST:event_jMenuItem7ActionPerformed
+    }//GEN-LAST:event_menuPesquisaClienteActionPerformed
+
+    private void menuCaadastroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCaadastroClienteActionPerformed
+        abrirForm(new FormCadastroCliente());
+    }//GEN-LAST:event_menuCaadastroClienteActionPerformed
+
+    private void menuCadastroProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastroProdutoActionPerformed
+        abrirForm(new FormCadastrarProduto());
+    }//GEN-LAST:event_menuCadastroProdutoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -187,12 +192,11 @@ public class FormPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem menuCaadastroCliente;
     private javax.swing.JMenuItem menuCadastroCategoria;
+    private javax.swing.JMenuItem menuCadastroProduto;
+    private javax.swing.JMenuItem menuPesquisaCliente;
+    private javax.swing.JMenuItem menuPesquisaProduto;
     // End of variables declaration//GEN-END:variables
 
 private void abrirForm(JInternalFrame f){
