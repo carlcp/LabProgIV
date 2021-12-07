@@ -127,7 +127,7 @@ public class FormaPesquisaCliente extends javax.swing.JInternalFrame {
             String id = tabDadosClien.getValueAt(linha, 0).toString();
 
             //abrir o formulário de Produto e centralizar na tela
-            FormCadastrarProduto f = new FormCadastrarProduto(id);
+            FormCadastroCliente f = new FormCadastroCliente(id);
             Dimension d = this.getDesktopPane().getSize();
             this.getDesktopPane().add(f);
             f.setLocation( (d.width-f.getSize().width)/2, (d.height-f.getSize().height)/2);
@@ -147,7 +147,7 @@ public class FormaPesquisaCliente extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     private void configurarForm() {
-        this.setTitle("Pesquisa de Produto");
+        this.setTitle("Pesquisa de Cliente");
         this.setResizable(false);
         this.setClosable(true);
         configurarTabela();

@@ -17,8 +17,28 @@ public class FormCadastroCliente extends javax.swing.JInternalFrame {
     /**
      * Creates new form FormPesquisaUsuario
      */
+    private String id;
     public FormCadastroCliente() {
-        initComponents();
+         initComponents();
+        this.setTitle("Cadastro de Cliente");
+        this.setResizable(false);
+        
+    }
+    public FormCadastroCliente(String id){
+        this();
+        this.id = id;
+        
+        //Exibir os dados da Cliente selecionada
+        Cliente cli = new ClienteDAO().pesquisarPorId(id);
+        if (cli!= null){
+            txtId.setText(Integer.toString(cli.getId()));
+            txtNomeClie.setText(cli.getNome());
+            txtCpf.setText(cli.getCpf());
+            txtDdd.setText(cli.getCpf());
+            txtTelefone.setText(cli.getCpf());
+            cbxAtivo.setSelectedIndex(cli.getFg_ativo());
+        }
+        
     }
 
     /**

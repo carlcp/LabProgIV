@@ -53,7 +53,7 @@ public class ClienteDAO {
     }
      public int atualizar(Cliente obj){
         try {
-            String SQL = "update tb_cliente set nome=?, cpf=?, fg_ativo=? where id=?";
+            String SQL = "update tb_cliente set nome=?, cpf=?,ddd=?, numero=?, fg_ativo=? where id=?";
 
             cmd = con.prepareStatement(SQL);
             cmd.setString(1, obj.getNome());
