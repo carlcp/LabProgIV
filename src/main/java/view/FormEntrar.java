@@ -1,28 +1,20 @@
-package view;
-
-import controller.UsuarioDAO;
-import javax.swing.JOptionPane;
-import model.Usuario;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package view;
 
-/**
- *
- * @author 834398
- */
-public class FormLogin extends javax.swing.JFrame {
+import controller.UsuarioDAO;
+import javax.swing.JOptionPane;
+import model.Usuario;
+public class FormEntrar extends javax.swing.JFrame {
 
     /**
-     * Creates new form FormLogin
+     * Creates new form FormEntrar
      */
-    public FormLogin() {
-        this.setUndecorated(true);
+    public FormEntrar() {
         initComponents();
-        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -37,11 +29,11 @@ public class FormLogin extends javax.swing.JFrame {
         lblLogin = new javax.swing.JLabel();
         lblUsuario = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
-        lblSenha = new javax.swing.JLabel();
-        btnEntrar = new javax.swing.JButton();
-        btnCadastrar = new javax.swing.JButton();
-        btnSair = new javax.swing.JButton();
         txtSenha = new javax.swing.JPasswordField();
+        lblSenha = new javax.swing.JLabel();
+        btnSair = new javax.swing.JButton();
+        btnCadastrar = new javax.swing.JButton();
+        btnEntrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,15 +45,17 @@ public class FormLogin extends javax.swing.JFrame {
 
         txtUsuario.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
 
+        txtSenha.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+
         lblSenha.setFont(new java.awt.Font("Tempus Sans ITC", 0, 20)); // NOI18N
         lblSenha.setText("SENHA");
 
-        btnEntrar.setFont(new java.awt.Font("Tempus Sans ITC", 0, 20)); // NOI18N
-        btnEntrar.setForeground(new java.awt.Color(12, 35, 195));
-        btnEntrar.setText("ENTRAR");
-        btnEntrar.addActionListener(new java.awt.event.ActionListener() {
+        btnSair.setFont(new java.awt.Font("Tempus Sans ITC", 0, 20)); // NOI18N
+        btnSair.setForeground(new java.awt.Color(12, 35, 195));
+        btnSair.setText("SAIR");
+        btnSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEntrarActionPerformed(evt);
+                btnSairActionPerformed(evt);
             }
         });
 
@@ -74,16 +68,14 @@ public class FormLogin extends javax.swing.JFrame {
             }
         });
 
-        btnSair.setFont(new java.awt.Font("Tempus Sans ITC", 0, 20)); // NOI18N
-        btnSair.setForeground(new java.awt.Color(12, 35, 195));
-        btnSair.setText("SAIR");
-        btnSair.addActionListener(new java.awt.event.ActionListener() {
+        btnEntrar.setFont(new java.awt.Font("Tempus Sans ITC", 0, 20)); // NOI18N
+        btnEntrar.setForeground(new java.awt.Color(12, 35, 195));
+        btnEntrar.setText("ENTRAR");
+        btnEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSairActionPerformed(evt);
+                btnEntrarActionPerformed(evt);
             }
         });
-
-        txtSenha.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -132,24 +124,24 @@ public class FormLogin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnSairActionPerformed
+
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         FormCadastrarUsuario frm = new FormCadastrarUsuario();
         frm.setVisible(true);
     }//GEN-LAST:event_btnCadastrarActionPerformed
-
-    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
         // TODO add your handling code here:
         Usuario u = new Usuario();
         u.setUsuario(txtUsuario.getText());
         u.setSenha(new String(txtSenha.getPassword()));
-        
+
         if (u.getUsuario().trim().isEmpty() ||
             u.getSenha().trim().isEmpty()){
-            
+
             JOptionPane.showMessageDialog(
                 null,
                 "Usuário e/ou senha não pode ser vazio",
@@ -157,14 +149,14 @@ public class FormLogin extends javax.swing.JFrame {
                 JOptionPane.ERROR_MESSAGE
             );
         }else{
-            
+
             if (new UsuarioDAO().login(u)){
-                
+
                 //login realizado com sucesso!
                 FormPrincipal f = new FormPrincipal();
                 f.setVisible(true);
                 this.dispose();
-                
+
             }else{
                 JOptionPane.showMessageDialog(
                     null,
@@ -173,7 +165,7 @@ public class FormLogin extends javax.swing.JFrame {
                     JOptionPane.ERROR_MESSAGE
                 );
             }
-            
+
         }
     }//GEN-LAST:event_btnEntrarActionPerformed
 
@@ -194,20 +186,20 @@ public class FormLogin extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormEntrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormEntrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormEntrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormEntrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormLogin().setVisible(true);
+                new FormEntrar().setVisible(true);
             }
         });
     }

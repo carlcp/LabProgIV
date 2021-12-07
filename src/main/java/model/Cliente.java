@@ -14,14 +14,20 @@ public class Cliente {
     private int id;
     private String nome;
     private String cpf;
+    private String ddd;
+    private String numero;
     private int fg_ativo;
 
-    public Cliente(int id, String nome, String cpf, int fg_ativo) {
+    public Cliente(int id, String nome, String cpf, String ddd, String numero, int fg_ativo) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
+        this.ddd = ddd;
+        this.numero = numero;
         this.fg_ativo = fg_ativo;
     }
+
+    
 
     public Cliente() {
     }
@@ -57,6 +63,22 @@ public class Cliente {
 
     public void setFg_ativo(int fg_ativo) {
         this.fg_ativo = fg_ativo;
+    }
+
+    public String getDdd() {
+        return ddd;
+    }
+
+    public void setDdd(String ddd) {
+        this.ddd = ddd;
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
     }
     
     

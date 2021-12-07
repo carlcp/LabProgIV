@@ -52,14 +52,7 @@ CREATE TABLE tb_cliente(
  nome varchar(250),
  cpf varchar(250),
  fg_ativo int,
+ ddd varchar (3),
+ numero varchar(10),
  constraint pk_cliente_id primary key(id)
-);	
-
-CREATE TABLE tb_telefone(
- ddd numeric(3),
- numero numeric(9),
- id_cliente int,
- fg_ativo int,
-constraint pk_telefone_id primary key(ddd, numero, id_cliente),
-constraint fk_cliente_id foreign key (id_cliente) references tb_cliente(id)
 );

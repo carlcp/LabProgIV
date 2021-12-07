@@ -5,15 +5,14 @@
  */
 package view;
 
-import controller.CategoriaDAO;
+
 import controller.ClienteDAO;
-import controller.ProdutoDAO;
-import controller.TelefoneDAO;
+import java.awt.Dimension;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Cliente;
-import model.Produto;
+
 
 /**
  *
@@ -184,10 +183,9 @@ public class FormaPesquisaCliente extends javax.swing.JInternalFrame {
                         {
                             obj.getId(),
                             obj.getNome(),
-                             //exibir o nome da Categoria
-                            new TelefoneDAO().pesquisarPorId(
-                                Integer.toString(obj.getId())
-                            ),
+                            obj.getCpf(),                           
+                            obj.getDdd(),
+                            obj.getNumero(),
                             obj.getFg_ativo() == 0 ? "Não" : "Sim"
                         }
                     );

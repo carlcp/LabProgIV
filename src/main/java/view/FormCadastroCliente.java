@@ -6,7 +6,8 @@
 package view;
 
 import model.Cliente;
-
+import controller.ClienteDAO;
+import javax.swing.JOptionPane;
 /**
  *
  * @author ycar2
@@ -39,19 +40,11 @@ public class FormCadastroCliente extends javax.swing.JInternalFrame {
         txtCpf = new javax.swing.JTextField();
         btnSalvar = new javax.swing.JButton();
         cbxAtivo = new javax.swing.JComboBox<>();
-        txtNomeProd = new javax.swing.JTextField();
+        txtNomeClie = new javax.swing.JTextField();
         lblId1 = new javax.swing.JLabel();
         txtDdd = new javax.swing.JTextField();
         txtTelefone = new javax.swing.JTextField();
         lblId3 = new javax.swing.JLabel();
-        lblAtivo1 = new javax.swing.JLabel();
-        lblId2 = new javax.swing.JLabel();
-        txtDdd1 = new javax.swing.JTextField();
-        txtTelefone1 = new javax.swing.JTextField();
-        lblId4 = new javax.swing.JLabel();
-        cbxAtivoTel2 = new javax.swing.JComboBox<>();
-        lblAtivo2 = new javax.swing.JLabel();
-        cbxAtivoTel1 = new javax.swing.JComboBox<>();
 
         btnCancelar.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         btnCancelar.setText("cancelar");
@@ -91,7 +84,7 @@ public class FormCadastroCliente extends javax.swing.JInternalFrame {
         cbxAtivo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não", "Sim" }));
         cbxAtivo.setSelectedIndex(1);
 
-        txtNomeProd.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        txtNomeClie.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
 
         lblId1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lblId1.setText("DDD");
@@ -102,30 +95,6 @@ public class FormCadastroCliente extends javax.swing.JInternalFrame {
 
         lblId3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lblId3.setText("Telefone");
-
-        lblAtivo1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        lblAtivo1.setText("Ativo");
-
-        lblId2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        lblId2.setText("DDD");
-
-        txtDdd1.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-
-        txtTelefone1.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-
-        lblId4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        lblId4.setText("Telefone");
-
-        cbxAtivoTel2.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        cbxAtivoTel2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não", "Sim" }));
-        cbxAtivoTel2.setSelectedIndex(1);
-
-        lblAtivo2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        lblAtivo2.setText("Ativo");
-
-        cbxAtivoTel1.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        cbxAtivoTel1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não", "Sim" }));
-        cbxAtivoTel1.setSelectedIndex(1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -142,7 +111,7 @@ public class FormCadastroCliente extends javax.swing.JInternalFrame {
                                     .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtNomeProd, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtNomeClie, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(8, 8, 8)
                                         .addComponent(lblNome))))
@@ -155,35 +124,16 @@ public class FormCadastroCliente extends javax.swing.JInternalFrame {
                                     .addComponent(cbxAtivo, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblAtivo)))
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(8, 8, 8)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(8, 8, 8)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(txtDdd, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(lblId1)
-                                                .addGap(96, 96, 96)
-                                                .addComponent(lblId3))))
+                                        .addComponent(txtDdd, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(12, 12, 12)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(lblId2)
-                                                .addGap(84, 84, 84)
-                                                .addComponent(lblId4))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(txtDdd1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(txtTelefone1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                .addGap(68, 68, 68)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblAtivo2)
-                                    .addComponent(cbxAtivoTel2, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblAtivo1)
-                                    .addComponent(cbxAtivoTel1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addComponent(lblId1)
+                                        .addGap(96, 96, 96)
+                                        .addComponent(lblId3))))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -207,7 +157,7 @@ public class FormCadastroCliente extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblNome)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtNomeProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtNomeClie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNome2)
@@ -219,28 +169,12 @@ public class FormCadastroCliente extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblId1)
-                    .addComponent(lblId3)
-                    .addComponent(lblAtivo1))
+                    .addComponent(lblId3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtDdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbxAtivoTel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblAtivo2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbxAtivoTel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblId2)
-                            .addComponent(lblId4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtDdd1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtTelefone1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -262,20 +196,15 @@ public class FormCadastroCliente extends javax.swing.JInternalFrame {
 
         //Recuperar as informações da UI
         Cliente obj = new Cliente();
-        obj.setNome(txtNomeProd.getText());
-
-        //Retornar a Categoria selecionada no ComboBox
-        Cliente cat = (Cliente)cbxcliente.getSelectedItem();
-        obj.setId_cliente(cat.getId());
-
-        obj.setNome(txtNomeProd.getText());
-        obj.setPreco(Double.parseDouble(txtPreco.getText()));
-        obj.setQntd(Integer.parseInt(txtQuantidade1.getText()));
-        obj.setTaxa(Double.parseDouble(txtTaxa.getText()));
+        
+        obj.setNome(txtNomeClie.getText());
+        obj.setNome(txtNomeClie.getText());
+        obj.setCpf(txtCpf.getText());
         obj.setFg_ativo(cbxAtivo.getSelectedIndex());
+        
 
         //Executar a operação
-        ProdutoDAO dao = new ProdutoDAO();
+        ClienteDAO dao = new ClienteDAO();
         int resultado;
 
         //se o campo Id estiver vazio
@@ -302,7 +231,7 @@ public class FormCadastroCliente extends javax.swing.JInternalFrame {
                 JOptionPane.ERROR_MESSAGE
             );
         }
-        this.dispose();
+        this.dispose();                     
     }//GEN-LAST:event_btnSalvarActionPerformed
 
 
@@ -310,25 +239,17 @@ public class FormCadastroCliente extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JComboBox<String> cbxAtivo;
-    private javax.swing.JComboBox<String> cbxAtivoTel1;
-    private javax.swing.JComboBox<String> cbxAtivoTel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblAtivo;
-    private javax.swing.JLabel lblAtivo1;
-    private javax.swing.JLabel lblAtivo2;
     private javax.swing.JLabel lblId;
     private javax.swing.JLabel lblId1;
-    private javax.swing.JLabel lblId2;
     private javax.swing.JLabel lblId3;
-    private javax.swing.JLabel lblId4;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblNome2;
     private javax.swing.JTextField txtCpf;
     private javax.swing.JTextField txtDdd;
-    private javax.swing.JTextField txtDdd1;
     private javax.swing.JTextField txtId;
-    private javax.swing.JTextField txtNomeProd;
+    private javax.swing.JTextField txtNomeClie;
     private javax.swing.JTextField txtTelefone;
-    private javax.swing.JTextField txtTelefone1;
     // End of variables declaration//GEN-END:variables
 }

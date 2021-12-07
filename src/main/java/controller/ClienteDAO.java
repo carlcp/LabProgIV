@@ -29,12 +29,14 @@ public class ClienteDAO {
     public int inserir(Cliente obj){
      try {
             String SQL = "insert into tb_cliente "
-                       + "(nome,cpf,fg_ativo) values (?,?,?,?)";
+                       + "(nome,cpf,ddd,numero,fg_ativo) values (?,?,?,?,?)";
             
             cmd = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             cmd.setString(1, obj.getNome());
             cmd.setString(2, obj.getCpf());
-            cmd.setInt(4,obj.getFg_ativo());
+            cmd.setString(3, obj.getDdd());
+            cmd.setString(4, obj.getNumero());
+            cmd.setInt(5,obj.getFg_ativo());
             
             if (cmd.executeUpdate() > 0){
                 ResultSet rs = cmd.getGeneratedKeys();
@@ -56,8 +58,10 @@ public class ClienteDAO {
             cmd = con.prepareStatement(SQL);
             cmd.setString(1, obj.getNome());
             cmd.setString(2, obj.getCpf());
-            cmd.setInt(4,obj.getFg_ativo());
-            cmd.setInt(5,obj.getId());
+            cmd.setString(3, obj.getDdd());
+            cmd.setString(4, obj.getNumero());
+            cmd.setInt(5,obj.getFg_ativo());
+            cmd.setInt(6,obj.getId());
             
             if (cmd.executeUpdate() > 0){
                 return 1;   //OK
@@ -89,6 +93,8 @@ public class ClienteDAO {
                 cli.setId(rs.getInt("id"));
                 cli.setNome(rs.getString("nome"));
                 cli.setCpf(rs.getString("cpf"));
+                cli.setDdd(rs.getString("ddd"));
+                cli.setNumero(rs.getString("numero"));
                 cli.setFg_ativo(rs.getInt("fg_ativo"));
                 lista.add(cli);
             }
@@ -107,7 +113,7 @@ public class ClienteDAO {
     //
     public List<Cliente> pesquisarPorNome(String nome){
         try {
-            String SQL = "select * from tb_cliente where nome ilike ? order by id";
+            String SQL = "select * from tb_cliente where nome ilike ? order by id";        
             cmd = con.prepareStatement(SQL);
             cmd.setString(1,"%"+nome+"%");
             
@@ -148,8 +154,9 @@ public class ClienteDAO {
                 Cliente cli = new Cliente();
                 cli.setId(rs.getInt("id"));
                 cli.setNome(rs.getString("nome"));
-                cli.setCpf(rs.getString("cpf"));
-   
+                cli.setDdd(rs.getString("ddd"));
+                cli.setNumero(rs.getString("numero"));
+                cli.setCpf(rs.getString("cpf"));  
                 cli.setFg_ativo(rs.getInt("fg_ativo"));
                 return cli;
             }
