@@ -49,5 +49,10 @@ public class Categoria {
         this.fg_ativo = fg_ativo;
     }
     
+    @Override
+    public String toString() {
+        return this.nome;
+    }
+    
     
 }

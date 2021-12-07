@@ -34,14 +34,18 @@ public class FormPrincipal extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         areaTrabalho = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu2 = new javax.swing.JMenu();
+        menuCategoria = new javax.swing.JMenu();
         menuCadastroCategoria = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
+        menuCategoriaPesquisar = new javax.swing.JMenuItem();
+        menuProduto = new javax.swing.JMenu();
         menuCadastroProduto = new javax.swing.JMenuItem();
         menuPesquisaProduto = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
+        menuCliente = new javax.swing.JMenu();
         menuCaadastroCliente = new javax.swing.JMenuItem();
         menuPesquisaCliente = new javax.swing.JMenuItem();
+        menuCombustiveis = new javax.swing.JMenu();
+        menuCadastrarCombustiveis = new javax.swing.JMenuItem();
+        menuPesquisaCombustiveis = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -60,7 +64,7 @@ public class FormPrincipal extends javax.swing.JFrame {
             .addGap(0, 279, Short.MAX_VALUE)
         );
 
-        jMenu2.setText("Categoria");
+        menuCategoria.setText("Categoria");
 
         menuCadastroCategoria.setText("Cadastrar");
         menuCadastroCategoria.addActionListener(new java.awt.event.ActionListener() {
@@ -68,11 +72,19 @@ public class FormPrincipal extends javax.swing.JFrame {
                 menuCadastroCategoriaActionPerformed(evt);
             }
         });
-        jMenu2.add(menuCadastroCategoria);
+        menuCategoria.add(menuCadastroCategoria);
 
-        jMenuBar1.add(jMenu2);
+        menuCategoriaPesquisar.setText("Pesquisar");
+        menuCategoriaPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuCategoriaPesquisarActionPerformed(evt);
+            }
+        });
+        menuCategoria.add(menuCategoriaPesquisar);
 
-        jMenu3.setText("Produto");
+        jMenuBar1.add(menuCategoria);
+
+        menuProduto.setText("Produto");
 
         menuCadastroProduto.setText("Cadastrar");
         menuCadastroProduto.addActionListener(new java.awt.event.ActionListener() {
@@ -80,7 +92,7 @@ public class FormPrincipal extends javax.swing.JFrame {
                 menuCadastroProdutoActionPerformed(evt);
             }
         });
-        jMenu3.add(menuCadastroProduto);
+        menuProduto.add(menuCadastroProduto);
 
         menuPesquisaProduto.setText("Visualizar");
         menuPesquisaProduto.addActionListener(new java.awt.event.ActionListener() {
@@ -88,11 +100,11 @@ public class FormPrincipal extends javax.swing.JFrame {
                 menuPesquisaProdutoActionPerformed(evt);
             }
         });
-        jMenu3.add(menuPesquisaProduto);
+        menuProduto.add(menuPesquisaProduto);
 
-        jMenuBar1.add(jMenu3);
+        jMenuBar1.add(menuProduto);
 
-        jMenu4.setText("Cliente");
+        menuCliente.setText("Cliente");
 
         menuCaadastroCliente.setText("Cadastrar");
         menuCaadastroCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -100,7 +112,7 @@ public class FormPrincipal extends javax.swing.JFrame {
                 menuCaadastroClienteActionPerformed(evt);
             }
         });
-        jMenu4.add(menuCaadastroCliente);
+        menuCliente.add(menuCaadastroCliente);
 
         menuPesquisaCliente.setText("Visualizar");
         menuPesquisaCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -108,9 +120,19 @@ public class FormPrincipal extends javax.swing.JFrame {
                 menuPesquisaClienteActionPerformed(evt);
             }
         });
-        jMenu4.add(menuPesquisaCliente);
+        menuCliente.add(menuPesquisaCliente);
 
-        jMenuBar1.add(jMenu4);
+        jMenuBar1.add(menuCliente);
+
+        menuCombustiveis.setText("Combustiveis");
+
+        menuCadastrarCombustiveis.setText("Cadastrar");
+        menuCombustiveis.add(menuCadastrarCombustiveis);
+
+        menuPesquisaCombustiveis.setText("Pesquisar");
+        menuCombustiveis.add(menuPesquisaCombustiveis);
+
+        jMenuBar1.add(menuCombustiveis);
 
         setJMenuBar(jMenuBar1);
 
@@ -148,6 +170,10 @@ public class FormPrincipal extends javax.swing.JFrame {
     private void menuCadastroProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastroProdutoActionPerformed
         abrirForm(new FormCadastrarProduto());
     }//GEN-LAST:event_menuCadastroProdutoActionPerformed
+
+    private void menuCategoriaPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCategoriaPesquisarActionPerformed
+        abrirForm(new FormPesquisaCategoria());
+    }//GEN-LAST:event_menuCategoriaPesquisarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -187,16 +213,20 @@ public class FormPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane areaTrabalho;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem menuCaadastroCliente;
+    private javax.swing.JMenuItem menuCadastrarCombustiveis;
     private javax.swing.JMenuItem menuCadastroCategoria;
     private javax.swing.JMenuItem menuCadastroProduto;
+    private javax.swing.JMenu menuCategoria;
+    private javax.swing.JMenuItem menuCategoriaPesquisar;
+    private javax.swing.JMenu menuCliente;
+    private javax.swing.JMenu menuCombustiveis;
     private javax.swing.JMenuItem menuPesquisaCliente;
+    private javax.swing.JMenuItem menuPesquisaCombustiveis;
     private javax.swing.JMenuItem menuPesquisaProduto;
+    private javax.swing.JMenu menuProduto;
     // End of variables declaration//GEN-END:variables
 
 private void abrirForm(JInternalFrame f){

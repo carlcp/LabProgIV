@@ -27,7 +27,7 @@ public class CategoriaDAO {
     }
     
    
-    public int cadastro(Categoria obj){
+    public int inserir(Categoria obj){
         try {
             
             String SQL="insert into tb_categoria "
@@ -35,7 +35,7 @@ public class CategoriaDAO {
             
             cmd = con.prepareStatement(SQL);
             cmd.setString(1, obj.getNome());
-            cmd.setString(2, Integer.toString(obj.getFg_ativo()));   
+            cmd.setInt(2,obj.getFg_ativo()); 
            
   //envia a instrucao SQL para o banco
             if (cmd.executeUpdate() > 0){

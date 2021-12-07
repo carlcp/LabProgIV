@@ -27,6 +27,7 @@ public class FormCadastrarProduto extends javax.swing.JInternalFrame {
         this.setTitle("Cadastro de Produto");
         this.setResizable(false);
         preencherComboCategoria();
+        
     }
     public  FormCadastrarProduto(String id){
         this();
@@ -257,7 +258,6 @@ public class FormCadastrarProduto extends javax.swing.JInternalFrame {
         if (txtId.getText().isEmpty()){
             //inserir
             resultado = dao.inserir(obj);
-            txtId.setText(Integer.toString(resultado));
         }else{
             //atualizar
             obj.setId(Integer.parseInt(txtId.getText()));
@@ -307,11 +307,11 @@ public class FormCadastrarProduto extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
   private void preencherComboCategoria(){
         //recuperar a lista de categorias
-        List<Produto> lista = new ProdutoDAO().listar();
+        List<Categoria> lista = new CategoriaDAO().listar();
         
         if (lista != null){
             DefaultComboBoxModel m = new DefaultComboBoxModel();
-            for(Produto obj : lista){
+            for(Categoria obj : lista){
                 m.addElement(obj); //{id,nome,fg_ativo}
             }
             cbxCategoria.setModel(m);

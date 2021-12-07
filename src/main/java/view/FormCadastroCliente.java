@@ -82,7 +82,6 @@ public class FormCadastroCliente extends javax.swing.JInternalFrame {
 
         cbxAtivo.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         cbxAtivo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não", "Sim" }));
-        cbxAtivo.setSelectedIndex(1);
 
         txtNomeClie.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
 
