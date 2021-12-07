@@ -142,16 +142,21 @@ public class FormCadastrarUsuario extends javax.swing.JFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         //Recuperar as informacoes da UI
-        Usuario obj = new Usuario();         
+        Usuario obj = new Usuario();
         //retornar a categoria selecionada no comboBox
         obj.setUsuario(txtUsuario.getText());
         obj.setSenha(txtSenha.getText());
-       
-        
+
+        if(new UsuarioDAO().login(obj)){//Sendo true
+             JOptionPane.showMessageDialog(
+                    null,
+                    "Nome ja utilizado, por favor entre com outro nome"
+            );
+        }else{
         //executar a operacao
         UsuarioDAO dao = new UsuarioDAO();
         int resultado;
-        
+
         //se o campo Id estiver vazio
         if (txtId.getText().isEmpty()){
             //inserir
@@ -160,15 +165,15 @@ public class FormCadastrarUsuario extends javax.swing.JFrame {
             obj.setId(Integer.parseInt(txtId.getText()));
             resultado = dao.atualizar(obj);
         }
-            
-        
-        
+
+
+
         if (resultado == 1){
             JOptionPane.showMessageDialog(
                     null,
                     "Operacao realizada com sucesso!"
             );
-            
+
         }else{
             JOptionPane.showMessageDialog(
                     null,
@@ -177,7 +182,8 @@ public class FormCadastrarUsuario extends javax.swing.JFrame {
                     JOptionPane.ERROR_MESSAGE
             );
         }
-        
+        }
+
         this.dispose();
         
     }//GEN-LAST:event_btnSalvarActionPerformed

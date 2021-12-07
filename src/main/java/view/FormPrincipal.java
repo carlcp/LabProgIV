@@ -127,9 +127,19 @@ public class FormPrincipal extends javax.swing.JFrame {
         menuCombustiveis.setText("Combustiveis");
 
         menuCadastrarCombustiveis.setText("Cadastrar");
+        menuCadastrarCombustiveis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuCadastrarCombustiveisActionPerformed(evt);
+            }
+        });
         menuCombustiveis.add(menuCadastrarCombustiveis);
 
         menuPesquisaCombustiveis.setText("Pesquisar");
+        menuPesquisaCombustiveis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuPesquisaCombustiveisActionPerformed(evt);
+            }
+        });
         menuCombustiveis.add(menuPesquisaCombustiveis);
 
         jMenuBar1.add(menuCombustiveis);
@@ -174,6 +184,14 @@ public class FormPrincipal extends javax.swing.JFrame {
     private void menuCategoriaPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCategoriaPesquisarActionPerformed
         abrirForm(new FormPesquisaCategoria());
     }//GEN-LAST:event_menuCategoriaPesquisarActionPerformed
+
+    private void menuCadastrarCombustiveisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastrarCombustiveisActionPerformed
+        abrirForm(new FormCadastrarCombustivel());
+    }//GEN-LAST:event_menuCadastrarCombustiveisActionPerformed
+
+    private void menuPesquisaCombustiveisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPesquisaCombustiveisActionPerformed
+        abrirForm(new FormPesquisaCombustivel());
+    }//GEN-LAST:event_menuPesquisaCombustiveisActionPerformed
 
     /**
      * @param args the command line arguments
